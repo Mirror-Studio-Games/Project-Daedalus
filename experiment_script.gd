@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+@onready var animated_sprite = $AnimatedSprite2D
 # ====================
 # STATE
 # ====================
@@ -9,9 +9,9 @@ var state : State = State.MOVE
 # ====================
 # MOVEMENT TUNING
 # ====================
-@export var walk_speed := 200.0
-@export var sprint_speed := 350.0
-@export var dodge_speed := 600.0
+@export var walk_speed := 350.0
+@export var sprint_speed := 760.0
+@export var dodge_speed := 900.0
 
 @export var accel := 2000.0
 @export var friction := 1800.0
@@ -25,13 +25,15 @@ var last_input_dir : Vector2 = Vector2.RIGHT
 # ====================
 # STAMINA
 # ====================
-@export var max_stamina := 100.0
+@export var max_stamina := 1000.0
 @export var sprint_drain := 30.0
 @export var regen_rate := 15.0
 @export var dodge_cost := 30.0
 
 var stamina := max_stamina
 
+@export var light_attack_duration := 0.2
+var light_attack_timer:= 0.0
 # ====================
 # DODGE
 # ====================
@@ -85,14 +87,28 @@ func _handle_state_transitions():
 
 	if Input.is_action_pressed("sprint") and stamina > 0 and input_dir != Vector2.ZERO:
 		state = State.SPRINT
+		animated_sprite.play("idle")
 	elif state != State.EXHAUSTED:
 		state = State.MOVE
 	
-	if Input.
-		
+	if Input.is_action_pressed("light_attack"):
+		state = State.LIGHT_ATTACK
+		velocity = Vector2.ZERO
+		animated_sprite.play("attack")
+		animated_sprite.play("idle")
 # ====================
 # LIGHT ATTACK
 # ====================
+func _light_attack():
+	light_attack_timer = light_attack_duration
+	animated_sprite.play("attack")
+	light_attack_timer = light_attack_duration
+	animated_sprite.play("idle")
+	
+func _process_light_attack(delta):
+	light_attack_timer -= delta
+	if light_attack_timer <= 0.0:
+		state = State.MOVE
 
 # ====================
 # MOVEMENT

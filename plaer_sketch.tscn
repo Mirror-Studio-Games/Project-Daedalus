@@ -1,54 +1,36 @@
 [gd_scene format=3 uid="uid://cewyugj636vmr"]
 
 [ext_resource type="Script" uid="uid://b4xr27ywwr2er" path="res://experiment_script.gd" id="1_ia5oa"]
-[ext_resource type="Texture2D" uid="uid://dgdmtwbfai0" path="res://daedalus_char.png" id="2_s038s"]
-[ext_resource type="Texture2D" uid="uid://o8k1ohcvy6f0" path="res://daedalus_variaton.png" id="3_dpawi"]
+[ext_resource type="Texture2D" uid="uid://ccwwgeras7lfs" path="res://light_attack.png" id="3_dpawi"]
 [ext_resource type="Texture2D" uid="uid://b2scfe4rp38a8" path="res://collision model.png" id="4_ia5oa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v7nrg"]
-atlas = ExtResource("3_dpawi")
-region = Rect2(450, 0, 356, 744)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dpawi"]
-atlas = ExtResource("2_s038s")
-region = Rect2(89, 0, 356, 744)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kig6n"]
+radius = 11.0
+height = 40.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia5oa"]
-atlas = ExtResource("2_s038s")
-region = Rect2(450, 0, 356, 744)
+atlas = ExtResource("3_dpawi")
+region = Rect2(0, 652, 380, 326)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r5402"]
-atlas = ExtResource("2_s038s")
-region = Rect2(811, 0, 356, 744)
+atlas = ExtResource("3_dpawi")
+region = Rect2(389, 652, 380, 326)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcmu1"]
-atlas = ExtResource("2_s038s")
-region = Rect2(1172, 0, 356, 744)
+atlas = ExtResource("3_dpawi")
+region = Rect2(778, 652, 380, 326)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05ya7"]
-atlas = ExtResource("2_s038s")
-region = Rect2(1533, 0, 356, 744)
+atlas = ExtResource("3_dpawi")
+region = Rect2(1167, 652, 380, 326)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lymg2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx8ma"]
 atlas = ExtResource("4_ia5oa")
-region = Rect2(0, 0, 1920, 1080)
+region = Rect2(834, 310, 278, 310)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rj586"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_kx8ma"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v7nrg")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dpawi")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ia5oa")
 }, {
@@ -62,39 +44,30 @@ animations = [{
 "texture": SubResource("AtlasTexture_05ya7")
 }],
 "loop": true,
-"name": &"run",
-"speed": 15.0
+"name": &"attack",
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lymg2")
+"texture": SubResource("AtlasTexture_kx8ma")
 }],
 "loop": true,
-"name": &"run_no_sword",
-"speed": 19.0
+"name": &"idle",
+"speed": 5.0
 }]
 
-[node name="sketch" type="Node2D" unique_id=2101283092]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1151909849]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1486609134]
 script = ExtResource("1_ia5oa")
-walk_speed = null
-sprint_speed = null
-dodge_speed = null
-accel = null
-friction = null
-max_stamina = null
-sprint_drain = null
-regen_rate = null
-dodge_cost = null
-dodge_duration = null
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1817642588]
-shape = SubResource("RectangleShape2D_4flbx")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=745012264]
+shape = SubResource("CapsuleShape2D_kig6n")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=445918362]
-position = Vector2(563, 306)
-scale = Vector2(0.31349206, 0.31349206)
-sprite_frames = SubResource("SpriteFrames_rj586")
-animation = &"run_no_sword"
-frame_progress = 0.9454342
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=686037320]
+sprite_frames = SubResource("SpriteFrames_kx8ma")
+animation = &"attack"
+frame_progress = 0.61050606
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1492326518]
+zoom = Vector2(0.64, 0.64)
+process_callback = 0
+limit_enabled = false

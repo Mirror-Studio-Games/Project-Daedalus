@@ -1,18 +1,29 @@
 [gd_scene format=3 uid="uid://binj5orirmpyf"]
 
 [ext_resource type="PackedScene" uid="uid://cewyugj636vmr" path="res://plaer_sketch.tscn" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://corro02j266mp" path="res://download.png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://dph6pqh3xutcw" path="res://backgroundbig.png" id="2_0xm2m"]
 
 [node name="Main" type="Node2D" unique_id=2031128818]
 
 [node name="sketch" parent="." unique_id=2101283092 instance=ExtResource("1_ig7tw")]
-position = Vector2(0, -4)
+position = Vector2(500, 297)
 
-[node name="Download" type="Sprite2D" parent="." unique_id=436555513]
+[node name="Backgroundbig" type="Sprite2D" parent="." unique_id=1492995228]
 z_index = -1
-position = Vector2(582.5, 324)
-scale = Vector2(4.2703705, 4.3783784)
+position = Vector2(-1493, -1203)
 texture = ExtResource("2_0xm2m")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1569838641]
-position = Vector2(564, 319)
+[node name="Backgroundbig" type="Sprite2D" parent="Backgroundbig" unique_id=1647486508]
+z_index = -1
+position = Vector2(3997, 1)
+texture = ExtResource("2_0xm2m")
+
+[node name="Backgroundbig2" type="Sprite2D" parent="Backgroundbig" unique_id=1275936409]
+z_index = -1
+position = Vector2(1, 2999)
+texture = ExtResource("2_0xm2m")
+
+[node name="Backgroundbig" type="Sprite2D" parent="Backgroundbig/Backgroundbig2" unique_id=1273245439]
+z_index = -1
+position = Vector2(3997, 1)
+texture = ExtResource("2_0xm2m")
