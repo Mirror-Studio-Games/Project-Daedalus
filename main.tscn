@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://binj5orirmpyf"]
+
+[ext_resource type="PackedScene" uid="uid://cewyugj636vmr" path="res://plaer_sketch.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://corro02j266mp" path="res://download.png" id="2_0xm2m"]
+
+[node name="Main" type="Node2D" unique_id=2031128818]
+
+[node name="sketch" parent="." unique_id=2101283092 instance=ExtResource("1_ig7tw")]
+position = Vector2(0, -4)
+
+[node name="Download" type="Sprite2D" parent="." unique_id=436555513]
+z_index = -1
+position = Vector2(582.5, 324)
+scale = Vector2(4.2703705, 4.3783784)
+texture = ExtResource("2_0xm2m")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1569838641]
+position = Vector2(564, 319)
